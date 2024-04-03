@@ -22,7 +22,7 @@ pipeline {
             steps {
                 script {
                     git credentialsId: 'Github', 
-                        url: 'https://https://github.com/nitish0104/DevSecOps-Python-Landingpage.git',
+                        url: 'https://github.com/nitish0104/DevSecOps-Python-Landingpage.git',
                         branch: 'master'
                 }
             }
