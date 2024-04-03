@@ -42,17 +42,7 @@ pipeline {
                 }
             }
         }
-        stage('Install Yarn') {
-            steps {
-                sh 'npm install -g yarn'
-            }
-        }
-
-        stage('Install Dependencies') {
-            steps {
-                sh "yarn install"
-            }
-        }
+        
         stage('TRIVY FS SCAN') {
              steps {
                  sh "trivy fs . > trivyfs.txt"
