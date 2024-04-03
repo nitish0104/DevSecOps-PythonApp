@@ -63,7 +63,7 @@ pipeline {
                 script{
                         sh '''
                         echo 'Build Docker Image'
-                        docker build -t nitish0104/devsecops:${BUILD_NUMBER} .
+                        docker build -t nitish0104/devsecops-python:${BUILD_NUMBER} .
                         echo 'Docker Build Completed'
                         '''
                     }
@@ -78,7 +78,7 @@ pipeline {
                         echo 'Logging into Docker'
                         docker login
                         echo 'Push to Docker  Repo'
-                        docker push nitish0104/nitish0104/devsecops:${BUILD_NUMBER}
+                        docker push nitish0104/nitish0104/devsecops-python:${BUILD_NUMBER}
                         '''
                     }
                 }
