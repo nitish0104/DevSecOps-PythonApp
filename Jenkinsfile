@@ -76,7 +76,7 @@ pipeline {
         }
         stage("TRIVY Image Scan"){
             steps{
-                sh "trivy image nitish0104/nitish0104/devsecops:${BUILD_NUMBER} > trivyimage.txt" 
+                sh "trivy image nitish0104/devsecops:${BUILD_NUMBER} > trivyimage.txt" 
             }
         }
         stage("CI Done"){
