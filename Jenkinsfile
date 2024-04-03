@@ -68,7 +68,7 @@ pipeline {
                         echo 'Logging into Docker'
                         docker login
                         echo 'Push to Docker  Repo'
-                        docker push nitish0104/nitish0104/devsecops-python:${BUILD_NUMBER}
+                        docker push nitish0104/devsecops-python:${BUILD_NUMBER}
                         '''
                     }
                 }
