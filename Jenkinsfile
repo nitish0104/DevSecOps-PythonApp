@@ -47,7 +47,7 @@ pipeline {
              steps {
                  sh "trivy fs . > trivyfs.txt"
              }
-         }
+        }
         stage('Build Docker'){
             steps{
                 script{
@@ -91,7 +91,7 @@ pipeline {
                 branch: 'master'
             }
         }
-        stage("CI Done"){
+        stage("CD Done"){
             steps{
                 echo "Done CI pipeline Done"
             }      
