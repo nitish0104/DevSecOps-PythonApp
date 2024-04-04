@@ -86,7 +86,7 @@ pipeline {
         }
         stage('Checkout K8S manifest SCM'){
             steps {
-                git credentialsId: 'jenkins-github', 
+                git credentialsId: 'Github', 
                 url: 'https://github.com/nitish0104/DevSecOps-landingpage-mainfest.git',
                 branch: 'master'
             }
