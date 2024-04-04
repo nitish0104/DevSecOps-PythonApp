@@ -9,6 +9,7 @@ pipeline {
         SCANNER_HOME = tool 'sonar-scanner'
         registryCredential = 'Docker'
         JOB_NAME= "${JOB_BASE_NAME}"
+        GITHUB_TOKEN = "${Github}"
         BUILD_URL= "${BUILD_URL}"
 
     }
@@ -89,6 +90,26 @@ pipeline {
                 git credentialsId: 'Github', 
                 url: 'https://github.com/nitish0104/DevSecOps-landingpage-mainfest.git',
                 branch: 'master'
+            }
+        }
+        stage('Update K8S manifest & push to Repo'){
+            steps {
+                script{
+                    withCredentials([usernamePassword(credentialsId: 'Github', passwordVariable: 'GITHUB_TOKEN', usernameVariable: 'nitish0104')]) {
+                        sh '''
+                        cat Deployment.yaml
+                        sed -i "s|8|${BUILD_NUMBER}|g" Deployment.yaml
+                        cat Deployment.yaml
+                        git config --global user.email "nitishdalvi1@gmail.com"
+                        git config --global user.name "nitish0104"
+                        echo "git configuration done"
+                        git remote set-url origin https://nitish0104:${GITHUB_TOKEN}@github.com/nitish0104/DevSecOps-landingpage-mainfest.git
+                        git add Deployment.yaml
+                        git commit -m 'Updated the Deployment yaml | Jenkins Pipeline'
+                        git push origin HEAD:master
+                        '''                        
+                    }
+                }
             }
         }
         stage("CD Done"){
