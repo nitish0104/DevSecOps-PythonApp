@@ -84,6 +84,18 @@ pipeline {
                 echo "Done CI pipeline Done"
             }      
         }
+        stage('Checkout K8S manifest SCM'){
+            steps {
+                git credentialsId: 'jenkins-github', 
+                url: 'https://github.com/nitish0104/DevSecOps-landingpage-mainfest.git',
+                branch: 'master'
+            }
+        }
+        stage("CI Done"){
+            steps{
+                echo "Done CI pipeline Done"
+            }      
+        }
         
     }
 
