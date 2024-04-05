@@ -119,6 +119,21 @@ pipeline {
         }
         
     }
+    post {
+        always {
+            script {
+                emailext subject: "Build '${currentBuild.result}': Job '${JOB_NAME}'",
+                body: """
+                Project: ${JOB_NAME}
+                Build Number: ${BUILD_NUMBER}
+                URL: ${env.BUILD_URL}
+                """,
+                recipientProviders: [culprits(), requestor()],
+                to: 'nitish1dalvi@gmail.com',
+                attachmentsPattern: 'trivyfs.txt, trivyimage.txt'
+            }
+        }
+    }
 
 
 }
