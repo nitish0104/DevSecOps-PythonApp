@@ -98,7 +98,7 @@ pipeline {
                     withCredentials([usernamePassword(credentialsId: 'Github', passwordVariable: 'GITHUB_TOKEN', usernameVariable: 'nitish0104')]) {
                         sh '''
                         cat Deployment.yaml
-                        sed -i "s|8|${BUILD_NUMBER}|g" Deployment.yaml
+                        sed -i "s|7|${BUILD_NUMBER}|g" Deployment.yaml
                         cat Deployment.yaml
                         git config --global user.email "nitishdalvi1@gmail.com"
                         git config --global user.name "nitish0104"
